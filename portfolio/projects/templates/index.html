@@ -1,378 +1,0 @@
-{% load static %}
-<!DOCTYPE html>
-<!--  بسم الله الرحمن الرحيم
-تم تطوير هذا الموقع بواسطة المبرمج عمار قاسم
--->
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>كرم قاسم | Video Editor</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    body { font-family: 'Tajawal', sans-serif;  }
-    *{
-      scroll-behavior: smooth;
-    }
-    .hero-bg {
-      background-image: url('https://images.unsplash.com/photo-1591101768185-7d2b4c2a99df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400');
-      background-size: cover;
-      background-position: center;
-    }
-  
-  .animate-spin-slow {
-    animation: spin 12s linear infinite;
-  }
-  .animate-bounce-slow {
-    animation: bounce 2.5s infinite;
-  }
-
-  </style>
-</head>
-<body class="bg-[#0f0f0f] text-white">
-
-<!-- 🌀 صفحة التحميل -->
-<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-lg transition-opacity duration-700">
-  <img src="{% static 'logo.png' %}" alt="Logo" class="w-32 h-32 animate-pulse drop-shadow-lg">
-</div>
-
-<script>
-  // ⏳ إخفاء صفحة التحميل بعد 2 ثانية
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      const loader = document.getElementById("preloader");
-      loader.classList.add("opacity-0");
-      setTimeout(() => loader.style.display = "none", 700); // بعد الإنميشن
-    }, 2000);
-  });
-</script>
-
-
-
-  <!-- Header -->
-  <header class="flex items-center justify-between p-4 bg-[#1c1c1c]/80 backdrop-blur-md shadow-lg fixed top-4 right-4 left-4 rounded-2xl z-40">
-    
-    <img src="{% static '/logo.png' %}" alt="logo" class="w-14">
-    
-    <button onclick="document.getElementById('menu').classList.toggle('hidden')" class="text-xl text-white">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
-
-  <!-- Side Menu -->
-  <aside id="menu" class="fixed top-28 left-4 bg-[#1c1c1c]/95 w-56 h-auto p-6 hidden shadow-xl rounded-2xl z-40">
-    <nav class="space-y-4 text-lg">
-      <a href="#home" class="block hover:text-[#89CFF0]"><i class="fas fa-home mr-2"></i>الرئيسية</a>
-      <a href="#about" class="block hover:text-[#89CFF0]"><i class="fas fa-user mr-2"></i>من أنا</a>
-      <a href="#services" class="block hover:text-[#89CFF0]"><i class="fas fa-tools mr-2"></i>الخدمات</a>
-      <a href="#projects" class="block hover:text-[#89CFF0]"><i class="fas fa-video mr-2"></i>المشاريع</a>
-      <a href="#contact" class="block hover:text-[#89CFF0]"><i class="fas fa-phone mr-2"></i>تواصل</a>
-    </nav>
-  </aside>
-
-<a href="https://wa.me/963959285689" target="_blank"
-   class="fixed bottom-5 right-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-all duration-300 z-40">
-  <i class="fab fa-whatsapp text-2xl"></i>
-</a>
-<!-- Hero with Video Background -->
-<section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
-
-  <!-- 🎥 خلفية الفيديو -->
-  <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover brightness-50 z-0">
-    <source src="{% static 'bg-video.mp4' %}" type="video/mp4">
-    متصفحك لا يدعم تشغيل الفيديو.
-  </video>
-
-  <!-- 🌈 تأثيرات فوق الفيديو -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 right-20 w-48 h-48 bg-[#FFE066]/10 rounded-full blur-2xl animate-spin-slow"></div>
-    <div class="absolute bottom-20 left-20 w-36 h-36 bg-[#FFC300]/10 rounded-full blur-2xl animate-ping"></div>
-
-  </div>
-
-  <!-- ✨ المحتوى -->
-  <div class="relative z-10 px-6 max-w-3xl mx-auto">
-    <h1 class="text-5xl md:text-7xl font-extrabold text-[#FFE066] mb-6 drop-shadow-lg">
-      مونتاج بإبداع
-    </h1>
-
-    <p class="text-xl md:text-2xl text-gray-200 leading-relaxed mb-8">
-      أهلاً بك، أنا <span class="text-[#89CFF0] font-bold">كرم قاسم</span>، مونتير محترف أحول أفكارك إلى فيديوهات تخطف الأنظار.
-      دعنا نصنع شيئاً مذهلاً معًا!
-    </p>
-
-    <a href="https://wa.me/963959285689" target="_blank"
-      class="inline-flex items-center gap-3 bg-gradient-to-r from-[#FFE066] to-[#FFC300] hover:from-[#FFC300] hover:to-[#FFE066] text-black px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl hover:shadow-2xl animate-bounce-slow">
-      <i class="fas fa-play-circle text-2xl"></i> اطلب مقطعك الآن
-    </a>
-
-    <!-- أيقونات -->
-    <div class="mt-8 flex justify-center gap-6 text-2xl text-[#89CFF0]">
-      <i class="fas fa-film hover:text-[#FFE066] transition"></i>
-      <i class="fas fa-magic hover:text-[#FFE066] transition"></i>
-      <i class="fas fa-bolt hover:text-[#FFE066] transition"></i>
-    </div>
-  </div>
-</section>
-<!-- About Me -->
-<section id="about" class="py-16 px-6 bg-[#1c1c1c] text-center md:text-right relative overflow-hidden">
-
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-20">
-
-    <!-- Image -->
-    <div class="md:w-1/2 w-full animate-fadeInUp">
-      <img src="{% static 'about-me.png' %}" alt="كرم قاسم مونتير" class="w-72 md:w-96 mx-auto md:mx-0 rounded-3xl shadow-xl hover:scale-105 transition-all duration-500">
-    </div>
-
-    <!-- Text -->
-    <div class="md:w-1/2 w-full animate-fadeInUp delay-200">
-      <h3 class="text-3xl font-bold mb-6 text-[#FFE066]">من أنا</h3>
-      <p class="text-lg text-gray-300 leading-loose">
-        أنا <span class="text-[#89CFF0] font-bold">كرم قاسم</span>، مختص بتعديل الفيديوهات بجميع أنواعها: إعلانات، ريلز، يوتيوب، أفلام قصيرة، فيديوهات ترويجية. 
-        أعمل بشغف لأصنع لك محتوى بصري احترافي يجذب الأنظار ويعكس رؤيتك بأعلى جودة.
-      </p>
-    </div>
-
-  </div>
-
-  <!-- Decorative Circles -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-[#FFE066]/10 to-transparent rounded-full blur-3xl animate-spin-slow"></div>
-  <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-tr from-[#89CFF0]/10 to-transparent rounded-full blur-3xl animate-pulse"></div>
-
-</section>
-
-<!-- Services -->
-<section id="services" class="py-20 px-6 bg-[#0f0f0f] relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-[#89CFF0]/10 via-transparent to-[#FFE066]/5 blur-3xl opacity-20"></div>
-
-  <h3 class="text-4xl font-bold text-center mb-14 text-[#FFE066] tracking-wide">خدماتي</h3>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-
-    <!-- Service Card -->
-    <div class="group relative bg-[#1c1c1c]/80 backdrop-blur-xl p-8 rounded-3xl shadow-lg border border-transparent hover:border-[#89CFF0] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03]">
-      <div class="text-[#89CFF0] text-5xl mb-6 group-hover:animate-bounce">
-        <i class="fas fa-cut"></i>
-      </div>
-      <h4 class="text-2xl font-semibold mb-3 text-white">مونتاج احترافي</h4>
-      <p class="text-gray-400 leading-relaxed">
-        تقطيع وتعديل الفيديو بأسلوب إبداعي مع لمسة احترافية تبرز محتواك.
-      </p>
-      <div class="absolute -top-1 -right-1 w-4 h-4 bg-[#89CFF0] rounded-full blur-md opacity-50 group-hover:opacity-80 transition"></div>
-    </div>
-
-    <!-- Service Card -->
-    <div class="group relative bg-[#1c1c1c]/80 backdrop-blur-xl p-8 rounded-3xl shadow-lg border border-transparent hover:border-[#FFE066] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03]">
-      <div class="text-[#FFE066] text-5xl mb-6 group-hover:animate-bounce">
-        <i class="fas fa-music"></i>
-      </div>
-      <h4 class="text-2xl font-semibold mb-3 text-white">دمج الصوت والمؤثرات</h4>
-      <p class="text-gray-400 leading-relaxed">
-        إضافة أصوات ومؤثرات سينمائية لخلق تجربة بصرية وسمعية متكاملة.
-      </p>
-      <div class="absolute -top-1 -right-1 w-4 h-4 bg-[#FFE066] rounded-full blur-md opacity-50 group-hover:opacity-80 transition"></div>
-    </div>
-
-    <!-- Service Card -->
-    <div class="group relative bg-[#1c1c1c]/80 backdrop-blur-xl p-8 rounded-3xl shadow-lg border border-transparent hover:border-[#FFC300] transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.03]">
-      <div class="text-[#FFC300] text-5xl mb-6 group-hover:animate-bounce">
-        <i class="fas fa-palette"></i>
-      </div>
-      <h4 class="text-2xl font-semibold mb-3 text-white">تصحيح الألوان</h4>
-      <p class="text-gray-400 leading-relaxed">
-        ضبط الألوان وتعديل الإضاءة لجعل مقاطعك نابضة بالحياة وملفتة للنظر.
-      </p>
-      <div class="absolute -top-1 -right-1 w-4 h-4 bg-[#FFC300] rounded-full blur-md opacity-50 group-hover:opacity-80 transition"></div>
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- Collaborate -->
-<section id="collab" class="py-20 px-6 bg-[#1c1c1c] text-center">
-  <h3 class="text-3xl md:text-4xl font-bold mb-6 text-[#FFE066]">تعاون مع كرم</h3>
-  <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
-    إذا كنت تبحث عن مونتير محترف يحول فكرتك إلى فيديو يخطف الأنفاس، فأنت في المكان المناسب.
-  </p>
-  <a href="#contact" class="inline-flex items-center gap-3 bg-gradient-to-r from-[#FFE066] to-[#FFC300] hover:from-[#FFC300] hover:to-[#FFE066] text-black px-8 py-4 rounded-full text-lg font-bold transition-all shadow-md hover:shadow-xl">
-    <i class="fas fa-handshake text-xl"></i> ابدأ التعاون الآن
-  </a>
-</section>
-
-
-<!-- Projects -->
-<section id="projects" class="py-20 px-6 bg-[#1c1c1c] text-center">
-  <h3 class="text-3xl md:text-4xl font-bold mb-10 text-[#FFE066]">أعمالي</h3>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-    {% for project in projects %}
-    <div onclick="openModal('{{ project.title }}', '{{ project.description }}', '{{ project.preview_link }}')" 
-         class="project-card cursor-pointer bg-[#0f0f0f] p-4 rounded-2xl hover:shadow-xl transition group relative overflow-hidden">
-      <img src="{{ project.image.url }}" alt="مشروع" class="rounded-lg mb-4 group-hover:opacity-75 transition w-full h-52 object-cover">
-      <h4 class="text-xl font-semibold text-[#89CFF0]">{{ project.title }}</h4>
-    </div>
-    {% endfor %}
-
-  </div>
-</section>
-
-<!-- Popup Modal -->
-<div id="projectModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-  <div class="bg-[#1c1c1c] rounded-2xl p-8 max-w-lg w-full relative text-left border border-gray-700 shadow-xl">
-    <button onclick="closeModal()" class="absolute top-3 right-4 text-gray-300 hover:text-white text-xl">
-      <i class="fas fa-times"></i>
-    </button>
-    <h4 id="modalTitle" class="text-2xl font-bold text-[#FFE066] mb-4"></h4>
-    <p id="modalDesc" class="text-gray-300 mb-6"></p>
-    <a id="modalLink" href="#" target="_blank" class="inline-flex items-center gap-2 bg-[#89CFF0] hover:bg-[#6fb5e0] text-black font-semibold px-6 py-3 rounded-full transition">
-      <i class="fas fa-play"></i> مشاهدة المقطع
-    </a>
-  </div>
-</div>
-
-<script>
-  function openModal(title, desc, link) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
-    document.getElementById('modalLink').href = link;
-    document.getElementById('projectModal').classList.remove('hidden');
-  }
-
-  function closeModal() {
-    document.getElementById('projectModal').classList.add('hidden');
-  }
-</script>
-
-</body>
-</html>
-  
-  
-  <!-- Testimonials -->
-<section id="testimonials" class="py-20 px-6 bg-[#0f0f0f] text-center">
-  <h3 class="text-3xl font-bold text-[#FFE066] mb-12">آراء العملاء</h3>
-
-  <div class="grid gap-8 md:grid-cols-3">
-    <!-- Testimonial 1 -->
-    <div class="bg-[#1c1c1c] p-6 rounded-2xl shadow-xl hover:scale-105 transition duration-300 relative overflow-hidden">
-      <i class="fas fa-quote-right text-[#89CFF0] text-4xl absolute top-4 left-4"></i>
-      <p class="text-gray-300 text-lg mb-4 leading-relaxed">
-        كرم أبدع في المونتاج! سرعة في التسليم واحترافية عالية بالتفاصيل.
-      </p>
-      <div class="text-[#FFE066] font-semibold">محمد العلي</div>
-      <div class="text-sm text-gray-500">صانع محتوى - السعودية</div>
-    </div>
-
-    <!-- Testimonial 2 -->
-    <div class="bg-[#1c1c1c] p-6 rounded-2xl shadow-xl hover:scale-105 transition duration-300 relative overflow-hidden">
-      <i class="fas fa-quote-right text-[#89CFF0] text-4xl absolute top-4 left-4"></i>
-      <p class="text-gray-300 text-lg mb-4 leading-relaxed">
-        حسيت كأن الفيديو طالع من شركة إنتاج سينمائي! شكراً كرم على الإبداع.
-      </p>
-      <div class="text-[#FFE066] font-semibold">لينا يوسف</div>
-      <div class="text-sm text-gray-500">مديرة تسويق - دبي</div>
-    </div>
-
-    <!-- Testimonial 3 -->
-    <div class="bg-[#1c1c1c] p-6 rounded-2xl shadow-xl hover:scale-105 transition duration-300 relative overflow-hidden">
-      <i class="fas fa-quote-right text-[#89CFF0] text-4xl absolute top-4 left-4"></i>
-      <p class="text-gray-300 text-lg mb-4 leading-relaxed">
-        تعامل راقٍ وسريع، والمونتاج كان خرافي. أنصح فيه 100%.
-      </p>
-      <div class="text-[#FFE066] font-semibold">خالد السالم</div>
-      <div class="text-sm text-gray-500">يوتيوبر - قطر</div>
-    </div>
-  </div>
-</section>
-  
-  
-
-  <!-- Contact -->
-<!-- Contact -->
-<section id="contact" class="py-16 px-6 bg-[#0f0f0f] text-center">
-  <h3 class="text-3xl font-bold mb-4 text-[#FFE066]">اطلب مقطعك الآن بكل سهولة</h3>
-  <p class="mb-6 text-lg text-gray-300 flex justify-center items-center gap-2">
-    <i class="fas fa-magic text-[#89CFF0] text-xl"></i>
-    فقط املأ البيانات وسيتم تحويلك مباشرة للدردشة معي عبر الواتساب!
-  </p>
-
-  <form onsubmit="sendWhatsApp(event)" class="max-w-lg mx-auto bg-[#1c1c1c] p-8 rounded-2xl shadow-2xl space-y-6">
-    <div class="flex flex-col text-right">
-      <label for="name" class="text-gray-300 mb-2 flex items-center gap-2">
-        <i class="fas fa-user text-[#FFE066]"></i> اسمك
-      </label>
-      <input type="text" id="name" name="name" required placeholder="اكتب اسمك هنا" 
-             class="p-3 rounded-xl bg-[#0f0f0f] text-white border border-gray-600 focus:outline-none focus:border-[#89CFF0] transition" />
-    </div>
-
-    <div class="flex flex-col text-right">
-      <label for="message" class="text-gray-300 mb-2 flex items-center gap-2">
-        <i class="fas fa-comment-dots text-[#FFE066]"></i> تفاصيل طلبك
-      </label>
-      <textarea id="message" name="message" rows="4" required placeholder="اكتب تفاصيل المقطع الذي تريده"
-                class="p-3 rounded-xl bg-[#0f0f0f] text-white border border-gray-600 focus:outline-none focus:border-[#89CFF0] transition"></textarea>
-    </div>
-
-    <button type="submit" class="w-full bg-[#89CFF0] hover:bg-[#6fb5e0] text-black px-6 py-3 rounded-full text-lg transition inline-flex items-center justify-center gap-2 shadow-lg">
-      <i class="fab fa-whatsapp"></i> ارسل الطلب الآن
-    </button>
-  </form>
-</section>
-
-  <!-- Footer -->
-<footer class="relative bg-[#1c1c1c]/80 backdrop-blur-xl p-6 text-center text-gray-400 text-sm rounded-2xl shadow-2xl mx-4 mb-4 mt-16 max-w-5xl mx-auto border border-[#2c2c2c] hover:border-[#89CFF0] transition-all duration-300">
-  
-  <!-- Social & Payments -->
-  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap text-xl">
-    <a href="#" target="_blank" class="hover:text-[#89CFF0] transition"><i class="fab fa-facebook"></i></a>
-    <a href="#" target="_blank" class="hover:text-[#89CFF0] transition"><i class="fab fa-instagram"></i></a>
-    <a href="#" target="_blank" class="hover:text-[#89CFF0] transition"><i class="fab fa-tiktok"></i></a>
-    <a href="#" target="_blank" class="hover:text-[#89CFF0] transition"><i class="fab fa-youtube"></i></a>
-    <span class="mx-4 text-gray-500">|</span>
-    <i class="fab fa-cc-visa text-[#FFE066]"></i>
-    <i class="fab fa-cc-mastercard text-[#FFE066]"></i>
-    <i class="fab fa-cc-paypal text-[#FFE066]"></i>
-  </div>
-  
-  <!-- Rights -->
-  <p class="mb-2 text-gray-400">
-    &copy; 2025 Karam Kassem | جميع الحقوق محفوظة
-  </p>
-  
-  <!-- Signature -->
-  <p class="text-sm text-gray-500">
-    صنع بإتقان بواسطة
-    <a href="https://ammar-kassem.github.io/Portfolio-/" target="_blank" class="text-[#89CFF0] hover:underline font-semibold">@ Ammar Kassem</a>
-  </p>
-  <!-- Floating Effect -->
-  <div class="absolute inset-0 rounded-2xl border border-[#2c2c2c] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] pointer-events-none"></div>
-  
-</footer>
-
-  <!-- Animation -->
-  <script>
-    document.querySelector('.animate-fadeIn').style.opacity = 0;
-    setTimeout(() => {
-      document.querySelector('.animate-fadeIn').style.transition = 'opacity 2s';
-      document.querySelector('.animate-fadeIn').style.opacity = 1;
-    }, 500);
-
-  function sendWhatsApp(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const phone = "963959285689"; // ضع رقمك هنا
-
-    const text = `مرحبًا كرم، أنا ${name} وأرغب في طلب مقطع:\n${message}`;
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-
-    window.open(url, '_blank');
-  }
-</script>
-
-</body>
-</html>
